@@ -1,7 +1,9 @@
 {
   "dependencies": {
     "axios": "^1.4.0",
-    "cheerio": "^1.0.0-rc.12"
+    "cheerio": "^1.0.0-rc.12",
+    "playwright": "^1.33.0",
+    "puppeteer": "^20.0.0"
   },
   "name": "js-web-scrape-test",
   "description": "",
