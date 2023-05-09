@@ -53,9 +53,9 @@ async function frameHandle() {
 
 	const jobTable = await frameContents.$('table#gnewtonCareerHome > tbody > tr:nth-child(4) > td');
 	const openPositions = await jobTable.evaluate((el) => el.innerText);
-	console.log('Kipsu - Open Positions: ',openPositions);
+	console.log('******* KIPSU - Open Positions: *******',openPositions);
 
-	// await browser.close();
+	await browser.close();
 	
 	};
 	
