@@ -42,30 +42,21 @@ const puppeteer = require('puppeteer');
 
 // getVisual()
 
-let scrape = async () => {
+async function frameHandle() {
 	const browser = await puppeteer.launch({headless: false});
 	const page = await browser.newPage();
 	
 	await page.goto('https://www.kipsu.com/careers');
-	const frame = await page.$('#gnewtonIframe')
-	// await frame.click('body > form > font > select');
-	// await page.waitFor(1000);
 
-	console.log('Frame: ', frame)
+	const frame = await page.$('#gnewtonIframe') // Finding iFrame
+	const frameContents = await frame.contentFrame(); // Getting contents of iFrame
+
+	const jobTable = await frameContents.$('table#gnewtonCareerHome > tbody > tr:nth-child(4) > td');
+	const openPositions = await jobTable.evaluate((el) => el.innerText);
+	console.log('Kipsu - Open Positions: ',openPositions);
+
+	// await browser.close();
 	
-	
-	const optionsResult = 
-			await frame.$eval('#gnewtonCareerHome > tbody > tr:nth-child(4) > td > div.gnewtonCareerGroupRowClass', (options) => {
-			const result = options.map(option => option.innerText);
-	
-			return result;
-	});
-	
-	await browser.close();
-	
-	return optionsResult;
 	};
 	
-	scrape().then((value) => {
-		console.log(value); // Success!
-	});
+frameHandle();
