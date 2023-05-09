@@ -57,6 +57,6 @@ async function frameHandle() {
 
 	await browser.close();
 	
-	};
+};
 	
-frameHandle();
+// frameHandle();

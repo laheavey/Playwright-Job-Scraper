@@ -22,6 +22,8 @@ async function pageHandle() {
 
 	await browser.close();
 	
-	};
+};
 	
-pageHandle ();
+// pageHandle ();
+
+export default pageHandle;
