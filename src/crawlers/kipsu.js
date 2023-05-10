@@ -35,11 +35,15 @@ async function frameHandle() {
 		.locator('#gnewtonSearchBtn')
 		.click()
 
+	await page.waitForTimeout(800)
+
 	const openPositions = await page
 		.frameLocator('iframe')
 		.locator('tr:nth-child(4)')
-		// .locator('div:has(div)')
-		.innerText()
+		.locator('div.gnewtonCareerGroupRowClass')
+		.locator('div.gnewtonCareerGroupJobTitleClass')
+		.locator('a')
+		.allInnerTexts()
 
 	console.log('openPositions: ', openPositions)
 	await browser.close();
