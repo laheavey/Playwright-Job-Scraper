@@ -1,62 +1,48 @@
 const puppeteer = require('puppeteer');
+const playwright = require('playwright')
 
-// async function getVisual() {
-// 	try {
-// 		const browser = await puppeteer.launch({
-// 			headless: false
-// 		})
-// 		const page = await browser.newPage()
-
-// 		await page.goto('https://www.kipsu.com/careers')
-// 		const frameHandle = await page.$('#gnewtonIframe');
-//     const frame = await frameHandle.contentFrame();
-// 		await frame.waitForSelector('#gnewtonCareerHome')
-
-// 		const LIST_POSITION_SELECTOR = '#gnewtonCareerHome > tbody > tr:nth-child(4) > td > div:nth-child(INDEX) > div.gnewtonCareerGroupJobTitleClass > a'
-// 		const LENGTH_SELECTOR_CLASS = 'gnewtonCareerGroupRowClass'
-
-// 		let listLength = await frame.evaluate((sel) => {
-// 			return document.getElementsByClassName(sel).length;
-// 		}, LENGTH_SELECTOR_CLASS);
-
-// 		for (let i = 1; i <= listLength; i++) {
-// 			// change the index to the next child
-// 			let positionSelector = LIST_POSITION_SELECTOR.replace("INDEX", i);
+// *** PUPPETEER CODE:
+// async function frameHandle() {
+// 	const browser = await puppeteer.launch({headless: false});
+// 	const page = await browser.newPage();
 	
-// 			let position = await frame.evaluate((sel) => {
-// 					return document.querySelector(sel).getAttribute('href').replace('/', '');
-// 				}, positionSelector);
+// 	await page.goto('https://www.kipsu.com/careers');
+
+// 	const frame = await page.$('#gnewtonIframe') // Finding iFrame
+// 	const frameContents = await frame.contentFrame(); // Getting contents of iFrame
+
+// 	const jobTable = await frameContents.$('table#gnewtonCareerHome > tbody > tr:nth-child(4) > td');
+// 	const openPositions = await jobTable.evaluate((el) => el.innerText);
+// 	console.log('******* KIPSU - Open Positions: *******',openPositions);
+
+// 	await browser.close();
 	
-// 			console.log('Position: ', position);
-// 	}
-
-// 		// await page.screenshot({ path: 'screenshot.png' })
-// 		// await page.pdf({ path: 'page.pdf' })
-
-
-// 	browser.close()
-// 	} catch (error) {
-// 		console.error(error)
-// 	}
-// }
-
-// getVisual()
+// };
 
 async function frameHandle() {
-	const browser = await puppeteer.launch({headless: false});
+	const browser = await playwright.chromium.launch({headless: false});
 	const page = await browser.newPage();
 	
 	await page.goto('https://www.kipsu.com/careers');
 
-	const frame = await page.$('#gnewtonIframe') // Finding iFrame
-	const frameContents = await frame.contentFrame(); // Getting contents of iFrame
+	await page
+		.frameLocator('iframe')
+		.locator('#gnewtonDepartment')
+		.selectOption('8a7883c685eb8d250186049a6f31088d')
 
-	const jobTable = await frameContents.$('table#gnewtonCareerHome > tbody > tr:nth-child(4) > td');
-	const openPositions = await jobTable.evaluate((el) => el.innerText);
-	console.log('******* KIPSU - Open Positions: *******',openPositions);
+	await page
+		.frameLocator('iframe')
+		.locator('#gnewtonSearchBtn')
+		.click()
 
+	const openPositions = await page
+		.frameLocator('iframe')
+		.locator('tr:nth-child(4)')
+		// .locator('div:has(div)')
+		.innerText()
+
+	console.log('openPositions: ', openPositions)
 	await browser.close();
-	
 };
 	
-// frameHandle();
+frameHandle();
