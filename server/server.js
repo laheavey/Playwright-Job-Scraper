@@ -1,23 +1,20 @@
 const express = require('express');
+const app = express();
 const bodyParser = require('body-parser');
-const app = express()
 const PORT = process.env.PORT || 5000;
+const axios = require('axios');
 
-app.use(express.static('server/public'))
+// Middleware
+app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
+app.use(express.static('build'));
 
-const trains = [
-  { name: 'Thomas', color: 'Blue' },
-  { name: 'Gordon', color: 'Blue' },
-  { name: 'Henry', color: 'Green' },
-  { name: 'James', color: 'Red' }
-];
-
+// Call
 app.get('/', (req, res) => {
-  res.sendStatus(200);
-})
+  res.sendStatus(200)
+});
 
+// Listen
 app.listen(PORT, () => {
-  console.log(`Server running on port: ${PORT}...`);
-})
+  console.log('Listening on port: ', PORT);
+});

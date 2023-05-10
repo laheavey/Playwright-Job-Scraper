@@ -1,7 +1,6 @@
-import Kipsu from './crawlers/kipsu';
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './components/App.js';
 
-document.getElementById("app").innerHTML = `
-<h1>Howdy</h1>
-`
-
-Kipsu();
+const root = createRoot(document.getElementById('root'));
+root.render(<App />)
