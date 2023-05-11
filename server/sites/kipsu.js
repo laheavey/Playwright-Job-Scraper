@@ -1,17 +1,18 @@
-// import { Dataset, PlaywrightCrawler, launchPlaywright } from 'crawlee'
 const crawlee = require('crawlee');
 
 const kipsu = async () => {
+	// Playwright launched, new page opened, navigates to job board
 	const browser = await crawlee.launchPlaywright();
-	const page = await browser.newPage();
-	
+	const page = await browser.newPage(); 
 	await page.goto('https://www.kipsu.com/careers');
 
+	// Once page is open, iframe & filters are found/selected
 	await page
 		.frameLocator('iframe')
 		.locator('#gnewtonDepartment')
 		.selectOption('8a7883c685eb8d250186049a6f31088d')
 
+	// Search button clicked, filtering data
 	await page
 		.frameLocator('iframe')
 		.locator('#gnewtonSearchBtn')
@@ -19,6 +20,7 @@ const kipsu = async () => {
 
 	await page.waitForTimeout(800)
 
+	// Grabs job data as an object, pushes it into scrapedData array
 	const openPositions = await page
 		.frameLocator('iframe')
 		.locator('div.gnewtonCareerGroupRowClass')
@@ -34,14 +36,7 @@ const kipsu = async () => {
 			});
 			return scrapedData;
 		});
-	// console.log('Open positions: ', openPositions)
-	// await crawlee.Dataset.pushData(openPositions);	
 	return openPositions;
 }
 
 module.exports = kipsu;
-		
-// console.log('Crawler finished.');
-// await Dataset.pushData(openPositions);	
-// await Dataset.exportToJSON('Kipsu_Positions');	
-// await browser.close();

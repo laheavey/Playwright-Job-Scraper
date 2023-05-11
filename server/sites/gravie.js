@@ -1,16 +1,18 @@
-import { launchPlaywright } from 'crawlee'
+const crawlee = require('crawlee');
 
-const Gravie = async () => {
-	const browser = await launchPlaywright();
+const gravie = async () => {
+  // Playwright launched, new page opened, navigates to job board
+	const browser = await crawlee.launchPlaywright();
 	const page = await browser.newPage();
-	
 	await page.goto('https://jobs.lever.co/gravie');
 
+  // Once page is open, filters are found/selected
   await page
     .locator('div.filter-bar')
     .getByLabel('Filter by Team: All')
     .click()
 
+  // Search button clicked, filtering data
   await page
     .getByRole('button', { expanded: true })
     .locator('li')
@@ -19,6 +21,7 @@ const Gravie = async () => {
   
   await page.waitForTimeout(800)
 
+  // Grabs job data as an object, pushes it into scrapedData array
   const openPositions = await page
     .locator('div.posting')
     .evaluateAll((data) => {
@@ -36,9 +39,4 @@ const Gravie = async () => {
   return openPositions;
 }
 
-module.exports = Gravie;
-
-// console.log('Crawler finished.');
-// await Dataset.pushData(openPositions);
-// await Dataset.exportToJSON('Gravie_Positions');	
-// await browser.close();
+module.exports = gravie;
