@@ -29,9 +29,9 @@ import { Dataset, PlaywrightCrawler, launchPlaywright } from 'crawlee'
 						location: row.querySelector('div.gnewtonCareerGroupJobDescriptionClass').innerText,
 						apply: row.querySelector('div.gnewtonCareerGroupJobTitleClass a').href
 					});
-				})
+				});
 				return scrapedData;
-			})
+			});
 			
 console.log('Crawler finished.');
 await Dataset.pushData(openPositions);	
