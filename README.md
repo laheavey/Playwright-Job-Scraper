@@ -25,39 +25,42 @@ I scoured LinkedIn profiles and came up with a fairly robust list of companies; 
 
 My intent is to tackle this in three stages: 
 
-[x] **Stage 1:** Initial Exploration
-- Investigate how webscrapers work, frameworks and libraries I may want to integrate
-  - Determine if this is ethical/legal??
-  - Lots of time Googling and searching Reddit.com for recent opinions, common issues
-- Clean up site list, determine which used template HR pages (e.g. lever.co, greenhouse, etc.)
-- Test out a few different options
-  - Tried Puppeteer; it was fine! Very similar to Playwright.
-  - Tried Playwright; landed on this one. Worked in more browsers, had great documentation, and gave me the option to rewrite this whole thing in another language if I want the practice later on. 
-  - Briefly tested adding Next.js to this whole thing but decided that it'd be better to learn one new thing at a time. 
 
-[ ] **Stage 2:** Initial Build
-- Scrape some meaningful data
-  - Get all jobs, at first, just to see if I can
-  - Filter jobs to just tech/SWE/SWE-adjacent
-  - Format scraped data object
-  - Run through multiple sites if using template HR pages
-  - Keep code clean and fast as possible; ongoing refactoring?
-- Get the data to the DOM
-  - Run all of the scraping at once
-  - Conditionally render DOM depending on data/no data
-  - Make sure it's accessible
-- Finish scripts for all career pages
-  - Full list in server > sites > sitelist.md
-- Figure out tests: best practices, expected behavior, etc.
+### Stage 1: Initial Exploration
+- [x] Investigate how webscrapers work, frameworks and libraries I may want to integrate
+  - [x] Confirm this is ethical/legal??
+  - [x] Lots of time Googling and searching Reddit.com for recent opinions, common issues, and popular tech choices
+- [x] Clean up site list, determine which used template HR pages (e.g. lever.co, greenhouse, etc.)
+- [x] Test out a few different options
+  - [x] Briefly tested adding Next.js to this whole thing but decided that it'd be better to learn one new thing at a time. 
+  - [x] Try Puppeteer
+    - This was fine! Very similar to Playwright.
+  - [x] Try Playwright; (landed on this one) 
+    - Worked in more browsers, had great documentation, and gave me the option to rewrite this whole thing in another language if I want the practice later on. 
 
-[ ] ***Stage 3:** Improvements
-- Styling for readability, morale-boosting, endorphins, etc.
-- Speed (currently *not fast*)
-  - Store jobs that were previously pulled
-  - Add logic to only pull new postings
-  - Add date pulled/timestamp to table
-- Explore cookies & login memory for certain sites (e.g. Workday) when clicking 'Apply' button
-- Add additional sites (aka hedge my bets)
+### Stage 2: Initial Build
+- [ ] Scrape some meaningful data
+  - [x] Get all jobs, at first, just to see if I can
+  - [x] Filter jobs to just tech/SWE/SWE-adjacent
+  - [x] Format scraped data object
+  - [x] Figure out how to run through multiple URLs for template HR pages
+  - [ ] Keep code clean and fast as possible; ongoing refactoring as I learn/experiment more
+- [ ] Get the data to the DOM
+  - [x] Run all of the scraping at once
+  - [x] Conditionally render DOM depending on data/no data
+  - [ ] Make sure it's accessible
+- [ ] Finish scripts for all career pages
+  - [ ] Full list in server > sites > sitelist.md
+- [ ] Figure out tests: best practices, expected behavior, etc.
+
+### Stage 3: Improvements
+- [ ] Styling for readability, morale-boosting, endorphins, etc.
+- [ ] Speed (currently *not fast*)
+  - [ ] Store jobs that were previously pulled
+  - [ ] Add logic to only pull new postings
+  - [ ] Add date pulled/timestamp to table
+- [ ] Explore cookies & login memory for certain sites (e.g. Workday) when clicking 'Apply' button
+- [ ] Add additional sites (aka hedge my bets)
 
 ## Getting Started
 
