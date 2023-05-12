@@ -18,6 +18,8 @@ const kipsu = async () => {
 		.locator('#gnewtonSearchBtn')
 		.click()
 
+	// TODO: Test switching from hard wait to smart wait;
+	// page.waitForResponse? page.waitForEvent?
 	await page.waitForTimeout(800)
 
 	// Grabs job data as an object, pushes it into scrapedData array
