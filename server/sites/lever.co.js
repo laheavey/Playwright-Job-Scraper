@@ -9,6 +9,7 @@ const lever = async () => {
   const urlArray = [
     'https://jobs.lever.co/gravie',
     'https://jobs.lever.co/flywheel-2',
+    'https://jobs.lever.co/granicus', // Confirm dropdown selected is correct;
   ];
 
   // Checks all urls in array
@@ -26,6 +27,7 @@ const lever = async () => {
     .getByRole('button', { expanded: true })
     .locator('li')
     .filter({ hasText: 'Engineering' })
+    .filter({ hasNotText: 'Platform' }) // Excluding Cloud Platforms dept at Granicus
     .click();
 
     await page.waitForTimeout(800);

@@ -2,8 +2,10 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5000;
+
 const kipsu = require('./sites/kipsu.js');
 const lever = require('./sites/lever.co.js');
+const greenhouse = require('./sites/greenhouse.js');
 
 const jobArray = [];
 
@@ -31,8 +33,13 @@ const allJobs = async () => {
       jobArray.push(results);
     });
       
-
   await lever()
+    .then((results) => {
+      // console.log('Lever: ', results);
+      jobArray.push(results);
+    });
+
+  await greenhouse()
     .then((results) => {
       // console.log('Lever: ', results);
       jobArray.push(results);
