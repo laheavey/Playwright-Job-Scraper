@@ -21,7 +21,7 @@ This app scrapes the career webpages of companies I've identified as having prev
 
 After graduating from Prime, I theorized that it would likely be easier to land my first SWE job at one of the many companies that had hired at least one prior graduate of my program. In my mind, these companies would already be familiar with the quality of education Prime provides, and I'd have an immediate and natural connection point to someone on the team. 
 
-I scoured LinkedIn profiles and came up with a fairly robust list of companies; however, it was pretty tedious to manage the various LinkedIn alerts for job postings (and I couldn't be sure every company was even *using* LinkedIn for open roles). After a few days of refreshing an absolute boatload of individual business websites, I figured there was an opportunity here to make my life a little easier. 
+I scoured LinkedIn profiles and came up with a fairly robust list of companies; however, it was pretty tedious to manage the various LinkedIn alerts for job postings (and I couldn't be sure every company was even *using* LinkedIn for open roles). After a few days of refreshing a metric ton of individual business websites, I figured there was an opportunity here to make my life a little easier. 
 
 My intent is to tackle this in three stages: 
 
@@ -52,10 +52,11 @@ My intent is to tackle this in three stages:
   - [ ] Make sure it's accessible
     - [ ] Use semantic HTML
     - [ ] Add labels
-    - [ ] Confirm tab-ability (not the right word but you know what I mean)
+    - [ ] Confirm navigable by tabs
 - [ ] Finish scripts for all career pages
   - [ ] Full list of companies/websites in server > sites > sitelist.md
 - [ ] Figure out tests: best practices, expected behavior, etc.
+- [ ] Basic styling
 
 ### Stage 3: Improvements
 - [ ] Styling for readability, morale-boosting, endorphins, etc.
@@ -63,9 +64,7 @@ My intent is to tackle this in three stages:
   - [ ] Keep accessible
 - [ ] Speed (currently *not fast*)
   - [ ] Test speed difference of filtering on a site (pre-scrape) vs. grabbing all roles and then filtering (post-scrape)
-  - [ ] Store jobs that were previously pulled
-  - [ ] Add logic to only pull new postings
-  - [ ] Add date pulled/timestamp to table
+  - [ ] Test storing jobs that were previously pulled, adding logic to only pull new postings
 - [ ] Explore cookies & login memory for certain sites (e.g. Workday) when clicking 'Apply' button
 - [ ] Add additional sites (aka hedge my bets)
 
