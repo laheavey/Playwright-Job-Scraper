@@ -28,34 +28,41 @@ My intent is to tackle this in three stages:
 
 ### Stage 1: Initial Exploration
 - [x] Investigate how webscrapers work, frameworks and libraries I may want to integrate
-  - [x] Confirm this is ethical/legal??
-  - [x] Lots of time Googling and searching Reddit.com for recent opinions, common issues, and popular tech choices
-- [x] Clean up site list, determine which used template HR pages (e.g. lever.co, greenhouse, etc.)
+  - [x] Confirm this is ethical/legal?? Avoid prison and/or lawsuits
+  - [x] Spend time Googling and searching Reddit.com for recent opinions, common issues, and popular tech choices
+- [x] Clean up site list, identify template HR pages (e.g. lever.co, greenhouse, etc.) for potential repeatability
 - [x] Test out a few different options
-  - [x] Briefly tested adding Next.js to this whole thing but decided that it'd be better to learn one new thing at a time. 
+  - [x] Try Next.js
+    - I'd done some experimenting here previously and considered using it for this project
+    - Felt I was getting a little lost in the weeds, decided it wasn't the greatest idea to try a brand new framework/library on something I wasn't yet super confident about
   - [x] Try Puppeteer
-    - This was fine! Very similar to Playwright.
-  - [x] Try Playwright; (landed on this one) 
-    - Worked in more browsers, had great documentation, and gave me the option to rewrite this whole thing in another language if I want the practice later on. 
+    - This was fine! Very similar to Playwright
+  - [x] Try Playwright (landed on this one) 
+    - Worked in more browsers, had great documentation, and gave me the option to rewrite this whole thing in another language if I want the practice later on
 
 ### Stage 2: Initial Build
-- [ ] Scrape some meaningful data
-  - [x] Get all jobs, at first, just to see if I can
+- [x] Begin scraping meaningful data
+  - [x] Get all jobs on a page first, just to see if I can
   - [x] Filter jobs to just tech/SWE/SWE-adjacent
   - [x] Format scraped data object
   - [x] Figure out how to run through multiple URLs for template HR pages
-  - [ ] Keep code clean and fast as possible; ongoing refactoring as I learn/experiment more
 - [ ] Get the data to the DOM
   - [x] Run all of the scraping at once
   - [x] Conditionally render DOM depending on data/no data
   - [ ] Make sure it's accessible
+    - [ ] Use semantic HTML
+    - [ ] Add labels
+    - [ ] Confirm tab-ability (not the right word but you know what I mean)
 - [ ] Finish scripts for all career pages
-  - [ ] Full list in server > sites > sitelist.md
+  - [ ] Full list of companies/websites in server > sites > sitelist.md
 - [ ] Figure out tests: best practices, expected behavior, etc.
 
 ### Stage 3: Improvements
 - [ ] Styling for readability, morale-boosting, endorphins, etc.
+  - [ ] Make responsive
+  - [ ] Keep accessible
 - [ ] Speed (currently *not fast*)
+  - [ ] Test speed difference of filtering on a site (pre-scrape) vs. grabbing all roles and then filtering (post-scrape)
   - [ ] Store jobs that were previously pulled
   - [ ] Add logic to only pull new postings
   - [ ] Add date pulled/timestamp to table
