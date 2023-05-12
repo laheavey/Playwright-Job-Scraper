@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 5000;
 const kipsu = require('./sites/kipsu.js');
 const lever = require('./sites/lever.co.js');
 const greenhouse = require('./sites/greenhouse.js');
+const applytojob = require('./sites/applytojob.js');
 
 const jobArray = [];
 
@@ -41,7 +42,13 @@ const allJobs = async () => {
 
   await greenhouse()
     .then((results) => {
-      // console.log('Lever: ', results);
+      // console.log('Greenhouse: ', results);
+      jobArray.push(results);
+    });
+
+    await applytojob()
+    .then((results) => {
+      // console.log('Apply To Job: ', results);
       jobArray.push(results);
     });
 };
