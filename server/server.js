@@ -2,26 +2,39 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 5000;
-const axios = require('axios');
-const kipsu = require('./sites/kipsu.js')
-const crawlee = require('crawlee');
-const gravie = require('./sites/gravie.js')
+const kipsu = require('./sites/kipsu.js');
+const lever = require('./sites/lever.co.js');
 
-// const jobListing = [];
+const jobArray = [];
+
 // Middleware
 app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('build'));
 
 // Call
-app.get('/get', (req, res) => {
-  kipsu().then((response) => {
-    console.log('Response: ', response)
-    res.send(response)
-  })
-})
+app.get('/get', async (req, res) => {
+  await allJobs().then((response) => {
+    res.send(jobArray.flat())
+  });
+});
 
 // Listen
 app.listen(PORT, () => {
   console.log('Listening on port: ', PORT);
 });
+
+const allJobs = async () => {  
+  await kipsu()
+    .then((results) => {
+      // console.log('Kipsu: ', results);
+      jobArray.push(results);
+    });
+      
+
+  await lever()
+    .then((results) => {
+      // console.log('Lever: ', results);
+      jobArray.push(results);
+    });
+};
