@@ -50,8 +50,8 @@ My intent is to tackle this in three stages:
   - [x] Run all of the scraping at once
   - [x] Conditionally render DOM depending on data/no data
   - [ ] Make sure it's accessible
-    - [ ] Use semantic HTML
-    - [ ] Add labels
+    - [x] Use semantic HTML
+    - [x] Add labels/scope/name
     - [ ] Confirm navigable by tabs
 - [ ] Finish scripts for all career pages
   - [ ] Full list of companies/websites in server > sites > sitelist.md

@@ -2,12 +2,15 @@ export default function JobTable ({jobsArray}) {
 
   return (
     <table>
+      <caption>
+        Software Jobs
+      </caption>
       <thead>
         <tr>
-          <th>Job Title</th>
-          <th>Company</th>
-          <th>Location</th>
-          <th>Apply</th>
+          <th scope="col">Job Title</th>
+          <th scope="col">Company</th>
+          <th scope="col">Location</th>
+          <th scope="col">Apply</th>
         </tr>
       </thead>
       <tbody>
@@ -18,7 +21,7 @@ export default function JobTable ({jobsArray}) {
               <td>{job.company}</td>
               <td>{job.location}</td>
               <td>
-                <button>
+                <button name="Apply to Job">
                   <a href={job.apply}>Apply</a>
                 </button>
               </td>
