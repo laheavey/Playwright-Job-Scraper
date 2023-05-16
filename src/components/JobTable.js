@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 export default function JobTable () {
   const jobs = useSelector(store => store.jobs);

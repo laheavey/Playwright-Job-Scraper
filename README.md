@@ -46,15 +46,17 @@ My intent is to tackle this in three stages:
   - [x] Filter jobs to just tech/SWE/SWE-adjacent
   - [x] Format scraped data object
   - [x] Figure out how to run through multiple URLs for template HR pages
+  - [x] Save scraped jobs to DB
 - [ ] Get the data to the DOM
   - [x] Run all of the scraping at once
-  - [x] Conditionally render DOM depending on data/no data
+  <!-- - [x] Conditionally render DOM depending on data/no data -->
   - [ ] Make sure it's accessible
     - [x] Use semantic HTML
     - [x] Add labels/scope/name
     - [ ] Confirm navigable by tabs
 - [ ] Finish scripts for all career pages
   - [ ] Full list of companies/websites in server > sites > sitelist.md
+  - [ ] Add logic to remove jobs no longer posted
 - [ ] Figure out tests: best practices, expected behavior, etc.
 - [ ] Basic styling
 
@@ -62,9 +64,9 @@ My intent is to tackle this in three stages:
 - [ ] Styling for readability, morale-boosting, endorphins, etc.
   - [ ] Make responsive
   - [ ] Keep accessible
+  - [ ] Add filters for columns
 - [ ] Speed (currently *not fast*)
   - [ ] Test speed difference of filtering on a site (pre-scrape) vs. grabbing all roles and then filtering (post-scrape)
-  - [ ] Test storing jobs that were previously pulled, adding logic to only pull new postings
 - [ ] Explore cookies & login memory for certain sites (e.g. Workday) when clicking 'Apply' button
 - [ ] Add additional sites (aka hedge my bets)
 

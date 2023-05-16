@@ -11,18 +11,22 @@ const applytojob = require('./sites/applytojob.js');
 
 const jobArray = [];
 
-// Middleware
+/** ---------- MIDDLEWARE ---------- **/
 app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('build'));
 
-// Call
+
+/** ---------- ROUTES ---------- **/
+
+// GET - Scrapes job sites
 app.get('/get', async (req, res) => {
   await allJobs().then((response) => {
     res.send(jobArray.flat());
   });
 });
 
+// GET - Pulls jobs saved to database
 app.get('/db', (req, res) => {
   const sqlQuery = `
   SELECT * FROM "prime_jobs"
@@ -37,8 +41,8 @@ app.get('/db', (req, res) => {
   })
 })
 
+// POST - Saves new scraped jobs to Database
 app.post('/db', (req, res) => {
-  console.log('Req.body: ', req.body)
   const sqlQuery = `
   INSERT INTO "prime_jobs"
   ("title", "company", "location", "url")
@@ -59,33 +63,30 @@ app.post('/db', (req, res) => {
   })
 })
 
-// Listen
+/** ---------- LISTEN ---------- **/
 app.listen(PORT, () => {
   console.log('Listening on port: ', PORT);
 });
 
 const allJobs = async () => {  
-  // await kipsu()
-  //   .then((results) => {
-  //     // console.log('Kipsu: ', results);
-  //     jobArray.push(results);
-  //   });
+  // probably something to refactor here
+  await kipsu()
+    .then((results) => {
+      jobArray.push(results);
+    });
       
   await lever()
     .then((results) => {
-      // console.log('Lever: ', results);
       jobArray.push(results);
     });
 
-  // await greenhouse()
-  //   .then((results) => {
-  //     // console.log('Greenhouse: ', results);
-  //     jobArray.push(results);
-  //   });
+  await greenhouse()
+    .then((results) => {
+      jobArray.push(results);
+    });
 
-  //   await applytojob()
-  //   .then((results) => {
-  //     // console.log('Apply To Job: ', results);
-  //     jobArray.push(results);
-  //   });
+    await applytojob()
+    .then((results) => {
+      jobArray.push(results);
+    });
 };
