@@ -1,4 +1,9 @@
-export default function JobTable ({jobsArray}) {
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+
+export default function JobTable () {
+  const jobs = useSelector(store => store.jobs);
 
   return (
     <table>
@@ -14,9 +19,9 @@ export default function JobTable ({jobsArray}) {
         </tr>
       </thead>
       <tbody>
-        {jobsArray?.map((job) => {
+        {jobs?.map((job) => {
           return (
-            <tr id={`${job.apply}`}>
+            <tr key={`${job.id}`}>
               <td>{job.title}</td>
               <td>{job.company}</td>
               <td>{job.location}</td>
