@@ -1,0 +1,22 @@
+body {
+  font-size: 10pt;
+}
+
+table {
+  border: 1px solid;
+  border-collapse: collapse;
+  /* width: 75%; */
+}
+
+th {
+  text-align: left;
+}
+
+th, td {
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+caption {
+  display: none;
+}

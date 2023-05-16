@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import JobTable from './JobTable';
+import './App.css';
 
 export default function App () {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ export default function App () {
 
   return (
     <>
-    <h1>Hi</h1>
+    <h1>SWE Jobs (+ Adjacent)</h1>
     <JobTable/>
     </>
   )
