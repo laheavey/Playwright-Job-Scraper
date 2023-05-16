@@ -29,8 +29,15 @@ app.get('/get', async (req, res) => {
 // GET - Pulls jobs saved to database
 app.get('/db', (req, res) => {
   const sqlQuery = `
-  SELECT * FROM "prime_jobs"
-  ORDER BY "company" ASC;`;
+  SELECT 
+    "id",
+    "title",
+    "company",
+    "location",
+    "url",
+    TO_CHAR("scraped", 'mm/dd/yyyy')
+  FROM "prime_jobs"
+  ORDER BY "title", "company" ASC;`;
   pool.query(sqlQuery)
   .then((results) => {
     res.send(results.rows);

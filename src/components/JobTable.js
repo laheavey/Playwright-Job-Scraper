@@ -10,8 +10,9 @@ export default function JobTable () {
       </caption>
       <thead>
         <tr>
-          <th scope="col">Job Title</th>
+          <th scope="col">Scrape Date</th>
           <th scope="col">Company</th>
+          <th scope="col">Job Title</th>
           <th scope="col">Location</th>
           <th scope="col">Apply</th>
         </tr>
@@ -20,12 +21,13 @@ export default function JobTable () {
         {jobs?.map((job) => {
           return (
             <tr key={`${job.id}`}>
-              <td>{job.title}</td>
+              <td>{job.to_char}</td>
               <td>{job.company}</td>
+              <td>{job.title}</td>
               <td>{job.location}</td>
               <td>
                 <button name="Apply to Job">
-                  <a href={job.apply}>Apply</a>
+                  <a href={job.url}>Apply</a>
                 </button>
               </td>
             </tr>
