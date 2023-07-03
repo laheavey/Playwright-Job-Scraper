@@ -9,6 +9,7 @@ const greenhouse = async () => {
   const urlArray = [
     'https://boards.greenhouse.io/nerdery',
     'https://boards.greenhouse.io/praxent',
+    'https://boards.greenhouse.io/pluralpolicy',
   ];
 
   // Opnes a page for all urls in array
