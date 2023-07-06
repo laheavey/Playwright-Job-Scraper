@@ -8,6 +8,7 @@ const kipsu = require('./sites/kipsu.js');
 const lever = require('./sites/lever.co.js');
 const greenhouse = require('./sites/greenhouse.js');
 const applytojob = require('./sites/applytojob.js');
+const linkedIn = require('./sites/linkedin.js');
 
 const jobArray = [];
 
@@ -96,4 +97,10 @@ const allJobs = async () => {
     .then((results) => {
       jobArray.push(results);
     });
+    
+    // NOT WORKING: 
+    // await linkedIn()
+    // .then((results) => {
+    //   jobArray.push(results);
+    // });
 };
